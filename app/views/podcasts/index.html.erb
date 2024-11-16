@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Podcasts</h1>
+
+      <ul class="list-group">
+        <% @podcasts.each do |podcast| %>
+          <li class="list-group-item">
+            <%= podcast.url %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

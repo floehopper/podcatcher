@@ -13,7 +13,7 @@ class Podcast < ApplicationRecord
       published_at: feed.published || feed.last_built
     )
 
-    feed.entries.each do |entry|
+    feed.entries.sort_by(&:published).reverse.first(10).each do |entry|
       episode = episodes.find_or_create_by!(guid: entry.id)
       episode.update!(
         title: entry.title,

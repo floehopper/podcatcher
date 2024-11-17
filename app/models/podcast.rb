@@ -17,6 +17,8 @@ class Podcast < ApplicationRecord
       episode = episodes.find_or_create_by!(guid: entry.id)
       episode.update!(
         title: entry.title,
+        enclosure_url: entry.enclosure_url,
+        enclosure_type: entry.enclosure_type,
         published_at: entry.published
       )
     end

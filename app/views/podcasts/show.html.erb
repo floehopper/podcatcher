@@ -4,9 +4,10 @@
       <h1><%= @podcast.title %></h1>
 
       <ul class="list-group">
-        <% @podcast.episodes.each do |episode| %>
+        <% @podcast.episodes.order(published_at: :desc).each do |episode| %>
           <li class="list-group-item">
             <%= episode.title %>
+            (published <%= time_ago_in_words(episode.published_at) %> ago)
           </li>
         <% end %>
       </ul>

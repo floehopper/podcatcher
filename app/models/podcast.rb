@@ -9,13 +9,15 @@ class Podcast < ApplicationRecord
     xml = URI.open(url).read
     feed = Feedjira.parse(xml)
     update!(
-      title: feed.title
+      title: feed.title,
+      published_at: feed.published || feed.last_built
     )
 
     feed.entries.each do |entry|
       episode = episodes.find_or_create_by!(guid: entry.id)
       episode.update!(
-        title: entry.title
+        title: entry.title,
+        published_at: entry.published
       )
     end
   end

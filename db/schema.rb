@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_17_160038) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_17_161639) do
   create_table "episodes", force: :cascade do |t|
     t.string "guid", null: false
     t.string "title"
     t.integer "podcast_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "published_at"
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
   end
 
@@ -25,6 +26,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_17_160038) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+    t.datetime "published_at"
     t.index ["url"], name: "index_podcasts_on_url", unique: true
   end
 

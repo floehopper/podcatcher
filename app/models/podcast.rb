@@ -1,6 +1,8 @@
 require "open-uri"
 
 class Podcast < ApplicationRecord
+  has_many :episodes, dependent: :destroy
+
   validates :url, presence: true, uniqueness: true
 
   def fetch
@@ -9,5 +11,12 @@ class Podcast < ApplicationRecord
     update!(
       title: feed.title
     )
+
+    feed.entries.each do |entry|
+      episode = episodes.find_or_create_by!(guid: entry.id)
+      episode.update!(
+        title: entry.title
+      )
+    end
   end
 end

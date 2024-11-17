@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Podcasts</h1>
+      <h1><%= @podcast.title %></h1>
 
       <ul class="list-group">
-        <% @podcasts.each do |podcast| %>
+        <% @podcast.episodes.each do |episode| %>
           <li class="list-group-item">
-            <%= link_to podcast.title, podcast_path(podcast) %>
+            <%= episode.title %>
           </li>
         <% end %>
       </ul>

@@ -1,6 +1,6 @@
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.all
+    @podcasts = Podcast.order(published_at: :desc)
   end
 
   def show

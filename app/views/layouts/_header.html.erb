@@ -9,6 +9,11 @@
         <li class="nav-item">
           <%= link_to "Podcasts", podcasts_path, class: "nav-link" %>
         </li>
+        <% if authenticated? && Current.user.subscriptions.any? %>
+          <li class="nav-item">
+            <%= link_to "Subscriptions", subscriptions_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav ms-auto">
         <% if authenticated? %>

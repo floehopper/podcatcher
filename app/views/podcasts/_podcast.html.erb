@@ -1,0 +1,4 @@
+<li class="list-group-item">
+  <%= link_to podcast.title, podcast_path(podcast) %>
+  <small class="text-muted">(published <%= time_ago_in_words(podcast.published_at) %> ago)</small>
+</li>

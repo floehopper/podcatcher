@@ -7,7 +7,7 @@
         <% @podcasts.each do |podcast| %>
           <li class="list-group-item">
             <%= link_to podcast.title, podcast_path(podcast) %>
-            (published <%= time_ago_in_words(podcast.published_at) %> ago)
+            <small class="text-muted">(published <%= time_ago_in_words(podcast.published_at) %> ago)</small>
           </li>
         <% end %>
       </ul>

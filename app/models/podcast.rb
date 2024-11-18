@@ -5,6 +5,8 @@ class Podcast < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :users, through: :subscriptions
 
+  default_scope { order(published_at: :desc) }
+
   validates :url, presence: true, uniqueness: true
 
   def fetch

@@ -2,7 +2,7 @@ class PodcastsController < ApplicationController
   allow_unauthenticated_access
 
   def index
-    @podcasts = Podcast.order(published_at: :desc)
+    @podcasts = Podcast.all
   end
 
   def show

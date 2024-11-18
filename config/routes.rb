@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   resources :podcasts, only: [ :index, :show ] do
     resources :subscriptions, only: :create
   end
+  resources :episodes, only: [ :show ] do
+    member do
+      get :load_position
+      post :save_position
+    end
+  end
   resources :subscriptions, only: [ :index, :destroy ]
 
   get "up" => "rails/health#show", as: :rails_health_check

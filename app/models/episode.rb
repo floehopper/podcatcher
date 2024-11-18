@@ -5,6 +5,8 @@ class Episode < ApplicationRecord
 
   has_one_attached :audio
 
+  default_scope { order(published_at: :desc) }
+
   validates :guid, presence: true, uniqueness: true
 
   def fetch

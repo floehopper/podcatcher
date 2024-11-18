@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: :create
   end
   resources :episodes, only: [:show]
-  resources :subscriptions, only: [:destroy]
+  resources :subscriptions, only: [:index, :destroy]
 
   get "up" => "rails/health#show", as: :rails_health_check
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_18_160855) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_18_175922) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,6 +49,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_160855) do
     t.string "enclosure_url"
     t.string "enclosure_type"
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
+  end
+
+  create_table "listenings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "episode_id", null: false
+    t.float "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_listenings_on_episode_id"
+    t.index ["user_id", "episode_id"], name: "index_listenings_on_user_id_and_episode_id", unique: true
+    t.index ["user_id"], name: "index_listenings_on_user_id"
   end
 
   create_table "podcasts", force: :cascade do |t|
@@ -90,6 +101,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_18_160855) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "episodes", "podcasts"
+  add_foreign_key "listenings", "episodes"
+  add_foreign_key "listenings", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "subscriptions", "podcasts"
   add_foreign_key "subscriptions", "users"

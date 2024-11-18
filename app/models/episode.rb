@@ -2,6 +2,7 @@ require "open-uri"
 
 class Episode < ApplicationRecord
   belongs_to :podcast
+  has_many :listenings, dependent: :destroy
 
   has_one_attached :audio
 

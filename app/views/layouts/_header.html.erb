@@ -5,6 +5,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Podcasts", podcasts_path, class: "nav-link" %>
+        </li>
+      </ul>
       <ul class="navbar-nav ms-auto">
         <% if authenticated? %>
           <li class="nav-item">

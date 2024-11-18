@@ -1,4 +1,17 @@
-<li class="list-group-item">
-  <%= link_to podcast.title, podcast_path(podcast) %>
-  <small class="text-muted">(published <%= time_ago_in_words(podcast.published_at) %> ago)</small>
+<li class="list-group-item d-flex justify-content-between">
+  <div>
+    <%= link_to podcast.title, podcast_path(podcast) %>
+    <small class="text-muted">(published <%= time_ago_in_words(podcast.published_at) %> ago)</small>
+  </div>
+  <% if authenticated? %>
+    <% if Current.user.subscribed_to?(podcast) %>
+      <%= button_to subscription_path(Current.user.subscription_for(podcast)), method: :delete, class: 'btn btn-primary' do %>
+        Unsubscribe
+      <% end %>
+    <% else %>
+      <%= button_to podcast_subscriptions_path(podcast), class: 'btn btn-primary' do %>
+        Subscribe
+      <% end %>
+    <% end %>
+  <% end %>
 </li>

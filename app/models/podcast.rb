@@ -2,6 +2,8 @@ require "open-uri"
 
 class Podcast < ApplicationRecord
   has_many :episodes, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
+  has_many :users, through: :subscriptions
 
   validates :url, presence: true, uniqueness: true
 

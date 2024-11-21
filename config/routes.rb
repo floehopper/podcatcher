@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :podcasts, only: [ :index, :show ] do
     resources :subscriptions, only: :create
   end
-  resources :episodes, only: [ :show ] do
+  resources :episodes, only: [ :show, :index ] do
     member do
       get :load_position
       post :save_position

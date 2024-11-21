@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :podcasts, through: :subscriptions
   has_many :listenings, dependent: :destroy
+  has_many :episodes, through: :podcasts
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 

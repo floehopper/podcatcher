@@ -12,10 +12,17 @@
         <li class="nav-item">
           <%= link_to "Podcasts", podcasts_path, class: "nav-link" %>
         </li>
-        <% if authenticated? && Current.user.subscriptions.any? %>
-          <li class="nav-item">
-            <%= link_to "Subscriptions", subscriptions_path, class: "nav-link" %>
-          </li>
+        <% if authenticated? %>
+          <% if Current.user.subscriptions.any? %>
+            <li class="nav-item">
+              <%= link_to "Subscriptions", subscriptions_path, class: "nav-link" %>
+            </li>
+          <% end %>
+          <% if Current.user.episodes.any? %>
+            <li class="nav-item">
+              <%= link_to "Episodes", episodes_path, class: "nav-link" %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
       <ul class="navbar-nav ms-auto">

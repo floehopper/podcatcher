@@ -1,4 +1,8 @@
 class EpisodesController < ApplicationController
+  def index
+    @episodes = Current.user.episodes
+  end
+
   def load_position
     episode = Episode.find(params.expect(:id))
     listening = Current.user.listenings.find_or_create_by!(episode: episode)

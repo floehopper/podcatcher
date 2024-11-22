@@ -42,7 +42,7 @@ gem "thruster", require: false
 
 gem "dartsass-rails"
 gem "bootstrap", "~> 5"
-gem "sass-embedded", "< 1.77.7" # TODO: remove when bootstrap fixes deprecation warnings
+gem "sass-embedded", "< 1.81.1" # TODO: remove when bootstrap fixes deprecation warnings
 gem "feedjira"
 
 group :development, :test do

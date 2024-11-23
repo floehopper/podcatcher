@@ -13,7 +13,7 @@
 
             <% if episode.audio.attached? %>
               <audio controls data-episode-target="audio" class="mt-2 mt-lg-0">
-                <source src="<%= rails_blob_path(episode.audio) %>" type="<%= episode.audio.content_type %>">
+                <source src="<%= cdn_url(episode.audio) %>" type="<%= episode.audio.content_type %>">
                 Your browser does not support the audio element.
               </audio>
             <% end %>

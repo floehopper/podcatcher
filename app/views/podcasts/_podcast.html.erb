@@ -1,7 +1,7 @@
 <li class="list-group-item d-flex justify-content-between">
   <div>
     <%= link_to podcast.title, podcast_path(podcast) %>
-    <small class="text-muted">(published <%= time_ago_in_words(podcast.published_at) %> ago)</small>
+    <small class="text-muted">(published <%= podcast.published_at && time_ago_in_words(podcast.published_at) %> ago)</small>
   </div>
   <% if authenticated? %>
     <% if Current.user.subscribed_to?(podcast) %>

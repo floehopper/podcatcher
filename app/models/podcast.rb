@@ -25,7 +25,7 @@ class Podcast < ApplicationRecord
         enclosure_type: entry.enclosure_type,
         published_at: entry.published
       )
-      episode.fetch
+      EpisodeFetcherJob.perform_later(episode)
     end
   end
 end
